@@ -24,7 +24,7 @@ import java.util.Collection;
  * Wojskowa Akademia Techniczna im. Jarosława Dąbrowskiego, Warszawa 08.11.2018.
  */
 @Entity
-@Table(name = "T_USER",uniqueConstraints = @UniqueConstraint(columnNames = "email"))
+@Table(name = "T_USER")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -32,30 +32,18 @@ public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "user_id")
     private Long id;
 
-    @Column
-    @NotEmpty
-    private String username;
-
-    @Column
-    @NotEmpty
-    private String password;
-
-    @Column
-    @NotEmpty
-    private String confirmPassword;
-
-    @Column
-    @NotEmpty
+    private String firstName;
+    private String lastName;
     private String email;
+    private String password;
 
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinTable(
-        name = "user_roles",
+        name = "users_roles",
         joinColumns = @JoinColumn(
-            name = "user_id", referencedColumnName = "user_id"),
+            name = "user_id", referencedColumnName = "id"),
         inverseJoinColumns = @JoinColumn(
             name = "role_id", referencedColumnName = "id"))
     private Collection<Role> roles;

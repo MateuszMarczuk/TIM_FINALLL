@@ -16,8 +16,6 @@ import org.springframework.stereotype.Service;
 public interface UserService extends UserDetailsService {
 
     User findByEmail(String email);
-    User save(UserRegistrationDto registrationDto);
 
-    @Override
-    UserDetails loadUserByUsername(String s) throws UsernameNotFoundException;
+    User save(UserRegistrationDto registration);
 }

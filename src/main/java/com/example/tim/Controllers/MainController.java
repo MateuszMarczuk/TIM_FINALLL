@@ -1,4 +1,4 @@
-package com.example.tim;
+package com.example.tim.Controllers;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class MainController {
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
-    public String root() {
+    public String root(){
         return "index";
     }
 
@@ -27,4 +27,6 @@ public class MainController {
     public String userIndex(){
         return "user/index";
     }
+
 }
+
