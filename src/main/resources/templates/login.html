@@ -15,20 +15,20 @@
     <div class="container-fluid d-flex flex-column justify-content-center align-items-center">
         <div class="row" style="margin-top: 10vh">
             <div class="col-12">
-                <h1>Panel logowania</h1>
+                <h1 th:text="#{am_login_title}"></h1>
                 <form th:action="@{/login}" method="post">
                     <div th:if="${param.error}">
-                        <div class="alert alert-danger" role="alert">
-                            <strong>Błąd ! </strong> Wprowadzone błedy login lub hasło
+                        <div class="alert alert-danger" role="alert" th:text="#{am_login_bad_credential}">
+                        
                         </div>
                     </div>
                     <div th:if="${param.logout}">
-                        <div class="alert alert-info">
-                            Zostałeś wylogowany.
+                        <div class="alert alert-info" th:text="#{am_login_info_logout}">
+                        
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="username">Nazwa użytkownika</label>:
+                        <label for="username" th:text="#{am_login_username}"></label>:
                         <input type="text"
                                id="username"
                                name="username"
@@ -37,7 +37,7 @@
                                placeholder="Nazwa użytkownika"/>
                     </div>
                     <div class="form-group">
-                        <label for="password">Hasło</label>:
+                        <label for="password" th:text="#{am_login_password}"></label>:
                         <input type="password"
                                id="password"
                                name="password"
@@ -57,10 +57,10 @@
                     </div>
                     <div class="form-group">
                         <input id="remember-me" name="remember-me" type="checkbox" value="true"/>
-                        <label for="remember-me" class="inline">Pamiętaj mnie ! </label>
+                        <label for="remember-me" class="inline" th:text="#{am_login_remember_me}"></label>
                     </div>
                     <div class="form-group">
-                        <span>Jesteś nowy ? <a href="/" th:href="@{/registration}">Zarejestruj się ! </a></span>
+                        <span th:text="#{am_login_new}"> </span><a href="/" th:href="@{/registration}"> Zarejestruj się ! </a>
                     </div>
                 </form>
             </div>
