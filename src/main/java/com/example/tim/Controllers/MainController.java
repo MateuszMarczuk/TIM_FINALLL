@@ -3,6 +3,7 @@ package com.example.tim.Controllers;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+
 import org.springframework.web.bind.annotation.RequestMethod;
 
 /**
@@ -27,6 +28,12 @@ public class MainController {
     public String userIndex(){
         return "user/index";
     }
+
+    @RequestMapping(value = "/students", method = RequestMethod.GET)
+    public String tables(){
+        return "students";
+    }
+
 
 }
 

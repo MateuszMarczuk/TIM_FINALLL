@@ -7,15 +7,16 @@
     
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" th:href="@{/css/main.css}"/>
-    
+    <link href="css/sb-admin.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css">
     <title>Registration</title>
 </head>
 <body class ="bg-dark">
 <div class="container">
-    <div class="container-fluid d-flex flex-column justify-content-center align-items-center" style="background-color: white;">
-        <div class="row" style="margin-top: 5vh">
-            <div class="col-12">
-                <h1 th:text="#{am_login_title}"></h1>
+    <div class="card card-login mx-auto mt-5">
+        <div class="card-header">Wirtualny Dziennik - Logowanie</div>
+        <div class="card-body">
+
                 <form th:action="@{/login}" method="post">
                     <div th:if="${param.error}">
                         <div class="alert alert-danger" role="alert" th:text="#{am_login_bad_credential}">
