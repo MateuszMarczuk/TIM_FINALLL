@@ -9,6 +9,11 @@ html {
   min-height: 100%;
 }
 
+.table td {
+   text-align: center;
+}
+
+
 body {
   height: 100%;
 }

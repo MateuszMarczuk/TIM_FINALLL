@@ -34,6 +34,21 @@ public class MainController {
         return "students";
     }
 
+	@RequestMapping(value = "/marks", method = RequestMethod.GET)
+	public String marks(){
+		return "marks";
+	}
+
+	@RequestMapping(value = "/calendar", method = RequestMethod.GET)
+	public String calendar(){
+		return "calendar";
+	}
+
+
+	@RequestMapping(value = "/employee", method = RequestMethod.GET)
+	public String employee(){
+		return "employee";
+	}
 
 }
 
