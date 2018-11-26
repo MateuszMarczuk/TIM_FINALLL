@@ -3,6 +3,8 @@ package com.example.tim.Model;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
 import javax.persistence.*;
 import java.util.Collection;
@@ -36,10 +38,20 @@ public class User {
             name = "role_id", referencedColumnName = "id")
 
     )
-
-
     private Collection<Role> roles;
 
+
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @Fetch(value = FetchMode.SUBSELECT)
+    @JoinTable(
+            name = "user_subject",
+            joinColumns = @JoinColumn(
+                    name = "user_id", referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(
+                    name = "subject_id", referencedColumnName = "id")
+
+    )
+    private Collection<Subject> subjects;
 
 
 
