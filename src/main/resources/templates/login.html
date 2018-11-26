@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="utf-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
@@ -63,6 +63,10 @@
                     <div class="form-group">
                         <span th:text="#{am_login_new}"> </span><a href="/" th:href="@{/registration}"> Zarejestruj się ! </a>
                     </div>
+                    <div sec:authorize="isAuthenticated()">
+                        This content is only shown to authenticated users.
+                    </div>
+                    <div sec:authentication="principal.authorities"></div>
                 </form>
             </div>
         </div>

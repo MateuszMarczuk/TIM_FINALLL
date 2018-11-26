@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
 	<meta charset="utf-8"/>
 	<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
@@ -26,6 +26,13 @@
 				<li class="breadcrumb-item active">Dla Studentów</li>
 			</ol>
 			<div th:replace="fragments/row :: row"></div>
+            
+            <div sec:authorize="hasAuthority('ROLE_ADMIN')">
+                This content is only shown to administrators.
+            </div>
+            <div sec:authorize="hasRole('ROLE_USER')">
+                This content is only shown to users.
+            </div>
 		</div>
 		<div th:replace="fragments/footer :: footer"></div>
 	</div>
