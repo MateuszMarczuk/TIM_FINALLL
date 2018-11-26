@@ -3,10 +3,8 @@ package com.example.tim.Service;
 import com.example.tim.DTO.UserRegistrationDto;
 import com.example.tim.Model.Role;
 import com.example.tim.Model.User;
+import com.example.tim.Repository.RoleRepository;
 import com.example.tim.Repository.UserRepository;
-import com.example.tim.Service.UserService;
-import javassist.NotFoundException;
-import org.omg.CosNaming.NamingContextPackage.NotFound;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -15,8 +13,10 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.List;
 import java.util.stream.Collectors;
 
 
@@ -29,6 +29,9 @@ public class UserServiceImpl implements UserService {
 
     @Autowired
     private UserRepository userRepository;
+
+    @Autowired
+    private RoleRepository roleRepository;
 
     @Autowired
     private BCryptPasswordEncoder passwordEncoder;
@@ -50,11 +53,13 @@ public class UserServiceImpl implements UserService {
 
     public User save(UserRegistrationDto registration){
         User user = new User();
+
         user.setFirstName(registration.getFirstName());
         user.setLastName(registration.getLastName());
         user.setEmail(registration.getEmail());
         user.setPassword(passwordEncoder.encode(registration.getPassword()));
-        user.setRoles(Arrays.asList(new Role("ROLE_USER")));
+        //roleRepository.findByName("ROLE_USER");
+        user.setRoles(Arrays.asList(new Role("USER")));
         return userRepository.save(user);
     }
 
@@ -62,5 +67,9 @@ public class UserServiceImpl implements UserService {
         return roles.stream()
             .map(role -> new SimpleGrantedAuthority(role.getName()))
             .collect(Collectors.toList());
+    }
+
+    public List<User> findAll(){
+       return userRepository.findAll();
     }
 }

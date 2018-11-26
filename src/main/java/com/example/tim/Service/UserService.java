@@ -2,10 +2,10 @@ package com.example.tim.Service;
 
 import com.example.tim.DTO.UserRegistrationDto;
 import com.example.tim.Model.User;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 
 /**
@@ -16,6 +16,6 @@ import org.springframework.stereotype.Service;
 public interface UserService extends UserDetailsService {
 
     User findByEmail(String email);
-
     User save(UserRegistrationDto registration);
+    List<User> findAll();
 }

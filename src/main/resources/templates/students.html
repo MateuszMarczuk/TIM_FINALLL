@@ -27,6 +27,23 @@
 			</ol>
 			<div th:replace="fragments/row :: row"></div>
             
+            <table class="table table-responsive" id="am-id_users_list">
+                <thead class="thead-default">
+                    <th>ID</th>
+                    <th>IMIE</th>
+                    <th>NAZWISKO</th>
+                    <th>EMAIL</th>
+                </thead>
+                <tbody>
+                    <tr th:each="user, itr:${users}">
+                        <td th:text="${user.firstName}"></td>
+                        <td th:text="${user.lastName}"></td>
+                        <td th:text="${user.email}"></td>
+                    </tr>
+                </tbody>
+                </tbody>
+            </table>
+            
             <div sec:authorize="hasAuthority('ROLE_ADMIN')">
                 This content is only shown to administrators.
             </div>
