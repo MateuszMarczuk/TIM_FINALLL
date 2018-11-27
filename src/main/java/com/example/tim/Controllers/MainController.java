@@ -42,10 +42,7 @@ public class MainController {
         return "user/index";
     }
 
-	@RequestMapping(value = "/marks", method = RequestMethod.GET)
-	public String marks(){
-		return "marks";
-	}
+	
 
 	@RequestMapping(value = "/calendar", method = RequestMethod.GET)
 	public String calendar(){

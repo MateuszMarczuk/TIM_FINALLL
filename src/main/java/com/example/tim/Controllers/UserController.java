@@ -25,7 +25,7 @@ public class UserController {
 
     @RequestMapping(value = "/students", method = RequestMethod.GET)
     public String tables(Model model){
-        model.addAttribute("users", userRepository.findAll());
+         model.addAttribute("users", userRepository.findAll());
         return "students";
     }
 

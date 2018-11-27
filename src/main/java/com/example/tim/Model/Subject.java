@@ -12,7 +12,7 @@ public class Subject {
 
 	private Long id;
 	private String name;
-	private String typeOfAcitivities;
+	private String typeOfActivities;
 	private Mark mark;
 
 
@@ -21,14 +21,14 @@ public class Subject {
 
 	}
 
-	public Subject(String typeOfAcitivities){
-		this.typeOfAcitivities = typeOfAcitivities;
+	public Subject(String typeOfActivities){
+		this.typeOfActivities = typeOfActivities;
 
 	}
 
-	public Subject(String name, String typeOfAcitivities, Mark mark){
+	public Subject(String name, String typeOfActivities, Mark mark){
 		this.name = name;
-		this.typeOfAcitivities =typeOfAcitivities;
+		this.typeOfActivities = typeOfActivities;
 		this.mark = mark;
 
 
@@ -53,12 +53,12 @@ public class Subject {
 		this.name = name;
 	}
 
-	public String getTypeOfAcitivities() {
-		return typeOfAcitivities;
+	public String getTypeOfActivities() {
+		return typeOfActivities;
 	}
 
-	public void setTypeOfAcitivities(String typeOfAcitivities) {
-		this.typeOfAcitivities = typeOfAcitivities;
+	public void setTypeOfActivities(String typeOfActivities) {
+		this.typeOfActivities = typeOfActivities;
 	}
 
 	@ManyToOne

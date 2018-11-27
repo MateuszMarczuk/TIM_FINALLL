@@ -43,13 +43,10 @@
 							</thead>
 							<tbody>
 							<tr>
-								<td rowspan="2">Algorytmy kwantowe</td>
-								<td>Wykład</td>
-								<td>4,5</td>
+							<tr th:each="subject :${subjects}">
+								<td th:text="${subject.name}"></td>
+								<td th:text="${subject.typeOfActivities}"></td>
 							</tr>
-							<tr>
-								<td>Cwiczenia</td>
-								<td>5</td>
 							</tr>
 							</tbody>
 						</table>
