@@ -7,7 +7,6 @@ import javax.persistence.*;
 
 @Entity
 @Data
-@Table(name = "Subject_of_users")
 @AllArgsConstructor
 public class Subject {
 
@@ -15,6 +14,7 @@ public class Subject {
 	private String name;
 	private String typeOfAcitivities;
 	private Mark mark;
+
 
 
 	public Subject(){
@@ -30,6 +30,7 @@ public class Subject {
 		this.name = name;
 		this.typeOfAcitivities =typeOfAcitivities;
 		this.mark = mark;
+
 
 	}
 
@@ -67,12 +68,6 @@ public class Subject {
 
 		return mark;
 	}
-
-
-	public void setMark(Mark mark){
-		this.mark = mark;
-	}
-
 
 
 }
