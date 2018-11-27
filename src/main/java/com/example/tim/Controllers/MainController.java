@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import java.util.List;
 
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
+import static org.springframework.web.bind.annotation.RequestMethod.POST;
 
 /**
  * Created by Mateusz Marczuk
@@ -39,14 +41,6 @@ public class MainController {
     public String userIndex(){
         return "user/index";
     }
-
-
-    @RequestMapping(value = "/students", method = RequestMethod.GET)
-    public String tables(Model model){
-        model.addAttribute("users", userRepository.findAll());
-        return "students";
-    }
-
 
 	@RequestMapping(value = "/marks", method = RequestMethod.GET)
 	public String marks(){
