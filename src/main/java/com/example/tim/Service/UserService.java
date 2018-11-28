@@ -19,5 +19,4 @@ public interface UserService extends UserDetailsService {
     User save(UserRegistrationDto registration);
     List<User> findAll();
     void deleteUserById(Long id);
-    //void delete(Long id);
 }

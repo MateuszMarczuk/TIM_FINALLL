@@ -51,9 +51,11 @@
                                 <td th:text="${user.firstName}"></td>
                                 <td th:text="${user.lastName}"></td>
                                 <td th:text="${user.email}"></td>
+                                <div sec:authorize="hasAuthority('ROLE_ADMIN')">
                                 <td>
-                                    <a th:href="@{/delete/{id}(id=${user.id})}">Delete</a>
+                                    <a th:href="@{/delete/{id}(id=${user.id})}" class="btn btn-danger">Usuń</a>
                                 </td>
+                                </div>
                             </tr>
                             </tr>
                             </tbody>

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
 	<meta charset="utf-8"/>
 	<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
@@ -20,12 +20,50 @@
 	<div id="content-wrapper">
 		<div class="container-fluid">
 			<ol class="breadcrumb">
+    
 				<li class="breadcrumb-item">
 					<a href="/">Home</a>
 				</li>
 				<li class="breadcrumb-item active">Pracownicy</li>
 			</ol>
-			<div th:replace="fragments/row :: row"></div>
+            <div th:replace="fragments/row :: row"></div>
+            <div class="card mb-3">
+                <div class="card-header">
+                    <i class="fas fa-table"></i>
+                    Wykaz Pracowników Semestr zimowy 2018/2019
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0" >
+                        <thead>
+                        <tr>
+                            <th>IMIE</th>
+                            <th>NAZWISKO</th>
+                            <th>EMAIL</th>
+                            <th>AKCJA</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                        <tr th:each="user :${users}">
+                            <td th:text="${user.firstName}"></td>
+                            <td th:text="${user.lastName}"></td>
+                            <td th:text="${user.email}"></td>
+                            <div sec:authorize="hasAuthority('ROLE_ADMIN')">
+                                <td>
+                                    <a th:href="@{/delete/{id}(id=${user.id})}" class="btn btn-danger">Usuń</a>
+                                </td>
+                            </div>
+                        </tr>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        
+        </div>
+        
+        
 		</div>
 		<div th:replace="fragments/footer :: footer"></div>
 	</div>
