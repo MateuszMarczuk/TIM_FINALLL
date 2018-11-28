@@ -6,6 +6,7 @@ import lombok.Data;
 import javax.persistence.*;
 
 @Entity
+@Table(name = "T_SUBJECT")
 @Data
 @AllArgsConstructor
 public class Subject {
