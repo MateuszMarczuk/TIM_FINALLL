@@ -4,7 +4,6 @@ import javax.persistence.*;
 import java.util.Set;
 
 @Entity
-@Table(name = "T_MARK")
 public class Mark {
 
 	private Long id;

@@ -16,7 +16,7 @@ import java.util.Optional;
  * Wojskowa Akademia Techniczna im. Jarosława Dąbrowskiego, Warszawa 28.11.2018.
  */
 @Service
-public class GroupServiceImpl{
+public class GroupServiceImpl implements GroupService{
 
     @Autowired
     GroupRepository groupRepository;
@@ -26,7 +26,6 @@ public class GroupServiceImpl{
     }
 
 
-    @Transactional
     public Group save(GroupDTO groupDTO) {
         Group group = new Group();
         group.setNameGroup(groupDTO.getNameGroup());

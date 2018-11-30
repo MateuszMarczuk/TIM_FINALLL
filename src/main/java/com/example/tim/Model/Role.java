@@ -15,7 +15,6 @@ import javax.persistence.Table;
  * Wojskowa Akademia Techniczna im. Jarosława Dąbrowskiego, Warszawa 12.11.2018.
  */
 @Entity
-@Table(name = "T_ROLE")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
