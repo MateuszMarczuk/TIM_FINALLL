@@ -13,5 +13,5 @@ import java.util.Optional;
 @Repository
 public interface GroupRepository extends CrudRepository<Group,Long> {
     Optional<Group> findById(Long id);
-    Group findByName(String nameGroup);
+    Group findByName(String name);
 }

@@ -20,6 +20,7 @@ import java.util.List;
  */
 @Entity
 @Data
+@Table(name="group_student")
 @AllArgsConstructor
 @NoArgsConstructor
 public class Group {
@@ -27,7 +28,7 @@ public class Group {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    private String nameGroup;
+    private String name;
 
 //    @OneToOne(cascade = CascadeType.ALL,
 //    fetch = FetchType.EAGER)

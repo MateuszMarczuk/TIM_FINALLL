@@ -4,8 +4,6 @@ import com.example.tim.DTO.GroupDTO;
 import com.example.tim.Model.Group;
 import com.example.tim.Repository.GroupRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -28,13 +26,13 @@ public class GroupServiceImpl implements GroupService{
 
     public Group save(GroupDTO groupDTO) {
         Group group = new Group();
-        group.setNameGroup(groupDTO.getNameGroup());
+        group.setName(groupDTO.getName());
         return groupRepository.save(group);
     }
 
     @Transactional
-    public Group findByName(String nameGroup) {
-        return groupRepository.findByName(nameGroup);
+    public Group findByName(String name) {
+        return groupRepository.findByName(name);
     }
 
 }

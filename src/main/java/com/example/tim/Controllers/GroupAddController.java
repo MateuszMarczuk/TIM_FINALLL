@@ -38,9 +38,9 @@ public class GroupAddController {
 
     @PostMapping
     public String addGroup(@ModelAttribute("group") @Valid GroupDTO groupDTO, BindingResult result){
-        Group existing = groupService.findByName(groupDTO.getNameGroup());
+        Group existing = groupService.findByName(groupDTO.getName());
         if (existing != null) {
-            result.rejectValue("nameGroup", "null","Nazwa takiej grupy już istnieje");
+            result.rejectValue("name", "null","Nazwa takiej grupy już istnieje");
         }
         if (result.hasErrors()){
             return "students";

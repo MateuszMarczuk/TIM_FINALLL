@@ -15,5 +15,5 @@ import java.util.Optional;
 public interface GroupService {
     Optional<Group> findById(Long id);
     Group save(GroupDTO groupDTO);
-    Group findByName(String nameGroup);
+    Group findByName(String name);
 }

@@ -19,7 +19,7 @@ import java.util.List;
 public class GroupDTO {
 
     @NotEmpty
-    private String nameGroup;
+    private String name;
 
     //private List<User> users;
 
