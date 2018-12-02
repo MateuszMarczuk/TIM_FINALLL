@@ -20,7 +20,7 @@ import javax.validation.Valid;
  * Wojskowa Akademia Techniczna im. Jarosława Dąbrowskiego, Warszawa 28.11.2018.
  */
 @Controller
-@RequestMapping("/addGroup")
+@RequestMapping(value = "/addGroup", method = RequestMethod.GET)
 public class GroupAddController {
 
     @Autowired
@@ -31,7 +31,7 @@ public class GroupAddController {
         return new GroupDTO();
     }
 
-    @GetMapping
+    @GetMapping(value = "/addGroup")
     public String showAddGroup(){
         return "addGroup";
     }
