@@ -5,6 +5,7 @@ import com.example.tim.Model.User;
 import com.example.tim.Repository.RoleRepository;
 import com.example.tim.Repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -35,6 +36,7 @@ public class UserController {
 
     @Autowired
     RoleRepository roleRepository;
+
 
     @RequestMapping(value = "/students", method = RequestMethod.GET)
     public String tables(Model model){

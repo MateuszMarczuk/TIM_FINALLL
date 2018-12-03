@@ -8,6 +8,7 @@ import org.hibernate.annotations.FetchMode;
 
 import javax.persistence.*;
 import java.util.Collection;
+import java.util.List;
 
 /**
  * Created by Mateusz Marczuk
@@ -38,7 +39,7 @@ public class User {
             name = "role_id", referencedColumnName = "id")
 
     )
-    private Collection<Role> roles;
+    private List<Role> roles;
 
 
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
@@ -53,9 +54,9 @@ public class User {
     )
     private Collection<Subject> subjects;
 
-    public Collection<Role> getRoles() {
-        return roles;
-    }
+//    public List<Role> getRoles() {
+//        return roles;
+//    }
 
     @Override
     public boolean equals(Object o) {
