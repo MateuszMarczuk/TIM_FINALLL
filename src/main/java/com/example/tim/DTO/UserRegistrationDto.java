@@ -1,6 +1,5 @@
 package com.example.tim.DTO;
 
-import com.example.tim.Model.User;
 import com.example.tim.constraint.FieldMatch;
 import lombok.AllArgsConstructor;
 import lombok.Data;

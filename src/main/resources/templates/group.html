@@ -28,26 +28,57 @@
             </ol>
             <div th:replace="fragments/row :: row"></div>
     
-            <form th:action="@{/addGroup}" th:object="${group}" method="post">
-                <p class="error-message"
-                   th:if="${#fields.hasGlobalErrors()}"
-                   th:each="error : ${#fields.errors('global')}"
-                   th:text="${error}">Validation error</p>
+            <!--<form th:action="@{/addGroup}" th:object="${group}" method="post">-->
+                <!--<p class="error-message"-->
+                   <!--th:if="${#fields.hasGlobalErrors()}"-->
+                   <!--th:each="error : ${#fields.errors('global')}"-->
+                   <!--th:text="${error}">Validation error</p>-->
+    <!---->
+                <!--<div class="form-group"-->
+                     <!--th:classappend="${#fields.hasErrors('nameGroup')}? 'has-error':''">-->
+                    <!--<label for="nameGroup" class="control-label">Nazwa grupy</label>-->
+                    <!--<input id="nameGroup"-->
+                           <!--class="form-control"-->
+                           <!--th:field="*{nameGroup}"/>-->
+                    <!--<p class="error-message"-->
+                       <!--th:each="error: ${#fields.errors('nameGroup')}"-->
+                       <!--th:text="${error}">Validation error</p>-->
+                <!--</div>-->
+                <!--<div class="form-group">-->
+                    <!--<button type="submit" class="btn btn-success">Dodaj</button>-->
+                <!--</div>-->
+            <!--</form>-->
     
-                <div class="form-group"
-                     th:classappend="${#fields.hasErrors('nameGroup')}? 'has-error':''">
-                    <label for="nameGroup" class="control-label">Nazwa grupy</label>
-                    <input id="nameGroup"
-                           class="form-control"
-                           th:field="*{nameGroup}"/>
-                    <p class="error-message"
-                       th:each="error: ${#fields.errors('nameGroup')}"
-                       th:text="${error}">Validation error</p>
+            <div class="card mb-3">
+                <div class="card-header">
+                    <i class="fas fa-table"></i>
+                    Wykaz uczniów Semestr zimowy 2018/2019
                 </div>
-                <div class="form-group">
-                    <button type="submit" class="btn btn-success">Dodaj</button>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0" >
+                            <thead>
+                            <tr>
+                                <th>Nazwa grupy</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                            <tr th:each="group :${groups}">
+                                <td th:text="${user.name}"></td>
+                                <!--<div sec:authorize="hasAuthority('ROLE_ADMIN')">-->
+                                    <!--<td>-->
+                                        <!--<a th:href="@{/delete/{id}(id=${user.id})}" class="btn btn-danger">Usuń</a>-->
+                                    <!--</td>-->
+                                <!--</div>-->
+                            </tr>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
-            </form>
+    
+            </div>
         
         </div>
         <div th:replace="fragments/footer :: footer"></div>

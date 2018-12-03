@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://thymeleaf.org">
+<html xmlns:th="http://thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8" http-equiv="Content-Type" content="text/html">
     <meta name="viewport" content="width=device-width, initial-scale=1 shrink-to-fit=no"/>
@@ -25,7 +25,8 @@
 
             <!-- Navbar -->
             <ul class="navbar-nav ml-auto ml-md-0">
-
+                <div sec:authentication="principal.authorities" style="color: white">
+                </div>
                 <li class="nav-item dropdown no-arrow">
                     <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <i class="fa fa-user"></i>

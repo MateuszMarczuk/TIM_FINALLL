@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://thymeleaf.org">
+<html xmlns:th="http://thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
 	<meta charset="UTF-8" http-equiv="Content-Type" content="text/html">
 	<meta name="viewport" content="width=device-width, initial-scale=1 shrink-to-fit=no"/>
@@ -75,6 +75,24 @@
 				</a>
 			</div>
 		</div>
+        <!--<div sec:authorize="hasAuthority('ROLE_ADMIN')">-->
+            <div class="col-xl-3 col-sm-6 mb-3" sec:authorize="hasAuthority('ROLE_ADMIN')">
+                <div class="card text-white bg-dark o-hidden h-100">
+                    <div class="card-body">
+                        <div class="card-body-icon">
+                            <i class="fas fa-random"></i>
+                        </div>
+                    <div class="mr-5">Zarządzanie grupami</div>
+                </div>
+                <a class="card-footer text-white clearfix small z-1" a href="/" th:href="@{/groupmanagement}">
+                    <span class="float-left">Więcej</span>
+                    <span class="float-right">
+                    <i class="fas a-angle-right"></i>
+                  </span>
+                </a>
+            </div>
+        </div>
+     
 	</div>
 </div>
 

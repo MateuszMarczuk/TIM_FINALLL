@@ -1,12 +1,10 @@
 package com.example.tim.DTO;
 
-import com.example.tim.Model.User;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.validation.constraints.NotEmpty;
-import java.util.List;
 
 /**
  * Created by Mateusz Marczuk

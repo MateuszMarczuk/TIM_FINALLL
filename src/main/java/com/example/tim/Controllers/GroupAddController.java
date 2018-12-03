@@ -2,9 +2,7 @@ package com.example.tim.Controllers;
 
 import com.example.tim.DTO.GroupDTO;
 import com.example.tim.Model.Group;
-import com.example.tim.Repository.GroupRepository;
 import com.example.tim.Service.GroupService;
-import com.example.tim.Service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
