@@ -13,8 +13,8 @@ public class Subject {
 	private Long id;
 	private String name;
 	private String typeOfActivities;
-	private Mark mark;
-
+	private Integer smark;
+	public Mark mark;
 
 
 	public Subject(){
@@ -26,9 +26,10 @@ public class Subject {
 
 	}
 
-	public Subject(String name, String typeOfActivities, Mark mark){
+	public Subject(String name, String typeOfActivities, Integer smark, Mark mark){
 		this.name = name;
 		this.typeOfActivities = typeOfActivities;
+		this.smark = smark;
 		this.mark = mark;
 
 
@@ -59,6 +60,15 @@ public class Subject {
 
 	public void setTypeOfActivities(String typeOfActivities) {
 		this.typeOfActivities = typeOfActivities;
+	}
+
+
+	public Integer getSmark() {
+		return smark;
+	}
+
+	public void setSmark(Integer smark) {
+		this.smark = smark;
 	}
 
 	@ManyToOne

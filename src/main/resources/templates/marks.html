@@ -46,6 +46,7 @@
 							<tr th:each="subject :${subjects}">
 								<td th:text="${subject.name}"></td>
 								<td th:text="${subject.typeOfActivities}"></td>
+								<td th:text="${subject.smark}"></td>
 							</tr>
 							</tr>
 							</tbody>
@@ -54,6 +55,14 @@
 				</div>
 
 			</div>
+
+			
+
+
+
+
+
+
 		</div>
 		<div th:replace="fragments/footer :: footer"></div>
 	</div>
