@@ -26,40 +26,7 @@
 				<li class="breadcrumb-item active">Dla Studentów</li>
 			</ol>
 			<div th:replace="fragments/row :: row"></div>
-
-
-			<form th:action="@{/addGroup}" method="post">
-			<br><br>
-			<p>Aby dodać nową grupę podaj nazwę w poniższym polu i uruchom przycisk</p>
-			<div class="form-group">
-				<div class="row">
-					<div class="col-sm-6 col-sm-offset-3">
-				<input type="name"
-					   id="name"
-					   name="name"
-					   class="form-control"
-					   placeholder="Nazwa grupy"/>
-			</div>
-				</div>
-			</div>
-
-
-				<div class="form-group">
-					<div class="row">
-						<div class="col-sm-6 col-sm-offset-3">
-							<input type="submit"
-								   name="group-submit"
-								   id="group-submit"
-								   class="btn btn-primary btn-block am-form-input-submit"
-								   value="Dodaj grupę"/>
-						</div>
-					</div>
-				</div>
-
-
-			</form>
-
-
+            
             <div sec:authorize="isAuthenticated()">
                 This content is only shown to authenticated users.
             </div>
