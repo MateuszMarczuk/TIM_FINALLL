@@ -35,6 +35,8 @@ public class GroupManagementController {
         return "groupmanagement";
     }
 
+
+
     @RequestMapping(value = "/deletegroup/{id}", method = RequestMethod.GET)
     public String deleteGroup(Model model, @PathVariable("id") Long id){
         Group group = groupRepository.findById(id)

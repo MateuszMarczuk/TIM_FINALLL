@@ -35,10 +35,7 @@ public class MainController {
         return "user/index";
     }
 
-	@RequestMapping(value = "/calendar", method = RequestMethod.GET)
-	public String calendar(){
-		return "calendar";
-	}
+
 
 }
 

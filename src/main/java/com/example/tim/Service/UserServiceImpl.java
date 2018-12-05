@@ -53,7 +53,7 @@ public class UserServiceImpl implements UserService {
     public User save(UserRegistrationDto registration){
         User user = new User();
         List<Role> userRole = new ArrayList<>();
-        userRole.add(roleRepository.findByName("ADMIN_ROLE"));
+        userRole.add(roleRepository.findByName("ROLE_ADMIN"));
         //List<Role> userRole = roleRepository.findByName("ROLE_USER");
 //        userRole=  roleRepository.findByName("ROLE_USER");
         user.setFirstName(registration.getFirstName());

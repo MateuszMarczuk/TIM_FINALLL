@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
 	<meta charset="utf-8"/>
 	<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
@@ -8,6 +8,8 @@
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css">
 	<link href="css/bootstrap.min.css" rel="stylesheet">
 	<link href="css/sb-admin.css" rel="stylesheet">
+
+
 
 
 </head>
@@ -26,7 +28,21 @@
 				<li class="breadcrumb-item active">Plan zajęć</li>
 			</ol>
 			<div th:replace="fragments/row :: row"></div>
-		</div>
+
+			<div class="card-body">
+				<a>Wybierz grupę</a>
+				<div class="table-responsive">
+					<table class="table table-bordered" id="dataTable" cellspacing="0" >
+						<tbody>
+						<tr th:each="group :${groups}" margin ="10">
+							<a href = "#" class="btn btn-success eBtn" th:text="${group.name}" margin="10"></a>
+						</tr>
+						</tbody>
+
+					</table>
+				</div>
+			</div>
+	</div>
 		<div th:replace="fragments/footer :: footer"></div>
 	</div>
 </div>
