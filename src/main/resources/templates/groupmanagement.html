@@ -63,8 +63,8 @@
                                 <td th:text="${group.name}"></td>
                                     <div sec:authorize="hasAuthority('ROLE_ADMIN')">
                                         <td>
-                                            <a  th:href="@{/deletegroup/{id}(id=${group.id})}" class="btn btn-danger dBtn">Usuń</a>
-    
+                                            <a  th:href="@{/deletegroup/{id} (id=${group.id})}" class="btn btn-danger delBtn">Usuń</a>
+                                            <!--<button class="btn btn-danger uBtn" id="btn-delete">Usuń</button>-->
                                             <a th:href="@{/findOne/(id=${group.id})}" class="btn btn-success eBtn" style="margin-left: 20px">Edytuj</a>
                                         </td>
                                     </div>
@@ -77,7 +77,7 @@
     
             </div>
                         <div class="myForm">
-                            <form th:action="@{/addGroup}" th:object="${group}" method="post">
+                            <form th:action="@{/savegroup}" th:object="${group}" method="post">
                             <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                 <div class="modal-dialog" role="document">
                                     <div class="modal-content">
@@ -90,6 +90,8 @@
                                         <div class="modal-body">
                                             <form>
                                                 <div class="form-group">
+                                                    <label for="name" class="col-form-label">ID:</label>
+                                                    <input type="text" class="form-control" id="id" name="id">
                                                     <label for="name" class="col-form-label">Nazwa grupy:</label>
                                                     <input type="text" class="form-control" id="name" name="name">
                                                 </div>
@@ -104,7 +106,6 @@
                             </div>
                             </form>
                         </div>
-        
         </div>
         <div th:replace="fragments/footer :: footer"></div>
     </div>
@@ -119,13 +120,15 @@
             
             var href = $(this).attr('href');
             $.get(href, function (group) {
+                $('.myForm #id').val(group.id);
                 $('.myForm #name').val(group.name);
             });
             
             $('.myForm #exampleModal').modal();
-        })
-        
-    })
+        });
+    
+    });
+    
 </script>
 
 </body>

@@ -7,12 +7,16 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.xml.ws.RequestWrapper;
 import java.util.List;
 import java.util.Optional;
+
+import static org.springframework.web.bind.annotation.RequestMethod.POST;
 
 /**
  * Created by Mateusz Marczuk
@@ -37,6 +41,12 @@ public class GroupManagementController {
             .orElseThrow(() -> new IllegalArgumentException("Niepoprawne id grupy" + id));
         groupRepository.deleteGroupById(id);
         model.addAttribute("groups", groupRepository.findAll());
+        return "redirect:/groupmanagement";
+    }
+
+    @RequestMapping(value = "/savegroup", method = RequestMethod.POST)
+    public String save(Group group){
+        groupRepository.save(group);
         return "redirect:/groupmanagement";
     }
 
