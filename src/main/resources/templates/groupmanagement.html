@@ -63,9 +63,9 @@
                                 <td th:text="${group.name}"></td>
                                     <div sec:authorize="hasAuthority('ROLE_ADMIN')">
                                         <td>
-                                            <a th:href="@{/delete/{id}(id=${group.id})}" class="btn btn-danger">Usuń</a>
+                                            <a  th:href="@{/deletegroup/{id}(id=${group.id})}" class="btn btn-danger dBtn">Usuń</a>
     
-                                            <a th:href="@{/edit/{id}(id=${group.id})}" class="btn btn-success" style="margin-left: 20px">Edytuj</a>
+                                            <a th:href="@{/findOne/(id=${group.id})}" class="btn btn-success eBtn" style="margin-left: 20px">Edytuj</a>
                                         </td>
                                     </div>
                             </tr>
@@ -76,12 +76,6 @@
                 </div>
     
             </div>
-         
-    
-    
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-3">
                         <div class="myForm">
                             <form th:action="@{/addGroup}" th:object="${group}" method="post">
                             <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -96,24 +90,20 @@
                                         <div class="modal-body">
                                             <form>
                                                 <div class="form-group">
-                                                    <label for="recipient-name" class="col-form-label">Nazwa grupy:</label>
-                                                    <input type="text" class="form-control" id="recipient-name">
+                                                    <label for="name" class="col-form-label">Nazwa grupy:</label>
+                                                    <input type="text" class="form-control" id="name" name="name">
                                                 </div>
                                             </form>
                                         </div>
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Zamknij</button>
-                                            <button type="submit" class="btn btn-primary" value="save">Zapisz</button>
+                                            <button type="submit" class="btn btn-primary" value="save" >Zapisz</button>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             </form>
                         </div>
-                    </div>
-                </div>
-            </div>
-        
         
         </div>
         <div th:replace="fragments/footer :: footer"></div>
@@ -124,13 +114,17 @@
 <script src="js/bootstrap.min.js"></script>
 <script>
     $(document).ready(function () {
-        $('.nBtn').on('click', function (event) {
+        $('.nBtn, .eBtn').on('click', function (event) {
             event.preventDefault();
-            var href = $(this).attr('href');
-            var text = $(this).text();
             
-            $('.myForm #nameGroup').val('');
+            var href = $(this).attr('href');
+            $.get(href, function (group) {
+                $('.myForm #name').val(group.name);
+            });
+            
+            $('.myForm #exampleModal').modal();
         })
+        
     })
 </script>
 

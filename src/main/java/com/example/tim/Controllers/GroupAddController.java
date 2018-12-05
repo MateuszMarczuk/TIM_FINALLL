@@ -46,6 +46,8 @@ public class GroupAddController {
         }
 
        groupService.save(groupDTO);
-        return "redirect:/students?success";
+        return "redirect:/groupmanagement?success";
     }
+
+
 }
