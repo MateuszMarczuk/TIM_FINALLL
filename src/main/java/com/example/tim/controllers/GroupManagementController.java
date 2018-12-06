@@ -1,7 +1,11 @@
 package com.example.tim.controllers;
 
 import com.example.tim.model.Group;
+import com.example.tim.model.Role;
+import com.example.tim.model.User;
 import com.example.tim.repository.GroupRepository;
+import com.example.tim.repository.RoleRepository;
+import com.example.tim.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -24,6 +29,12 @@ public class GroupManagementController {
 
     @Autowired
     private GroupRepository groupRepository;
+
+    @Autowired
+    private UserRepository userRepository;
+
+    @Autowired
+    private RoleRepository roleRepository;
 
     @GetMapping(value = "/groupmanagement")
     public String showGroupMamagement(Model model) {
@@ -55,6 +66,24 @@ public class GroupManagementController {
         return groupRepository.findById(id);
     }
 
+    @RequestMapping(value = "/showGroupList", method = RequestMethod.GET)
+    public String showGroupList(Model model){
+        List<Group> groupList = groupRepository.findAll();
+        List<User> userList = userRepository.findAll();
+        Role userRole = roleRepository.findByName("ROLE_USER");
+        List<User> userListNew = new ArrayList<>();
+
+        for (User user : userList){
+            if (user.getRoles().contains(userRole)){
+                userListNew.add(user);
+            }
+        }
+
+        model.addAttribute("groupList", groupList);
+        model.addAttribute("userListNew", userListNew);
+        return "groupList";
+    }
+
 
     @RequestMapping(value = "/groupList", method = RequestMethod.GET)
     public String groupList(Model model){
@@ -63,6 +92,11 @@ public class GroupManagementController {
         return "redirect:/groupList";
     }
 
+    @RequestMapping(value = "/assign", method = RequestMethod.POST)
+    public String assign(Model model){
+
+        return "redirect:/groupList";
+    }
 
 
 }

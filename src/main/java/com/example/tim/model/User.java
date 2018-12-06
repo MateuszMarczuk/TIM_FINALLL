@@ -41,7 +41,6 @@ public class User {
     )
     private List<Role> roles;
 
-
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @Fetch(value = FetchMode.SUBSELECT)
     @JoinTable(
@@ -53,10 +52,6 @@ public class User {
 
     )
     private Collection<Subject> subjects;
-
-//    public List<Role> getRoles() {
-//        return roles;
-//    }
 
     @Override
     public boolean equals(Object o) {
