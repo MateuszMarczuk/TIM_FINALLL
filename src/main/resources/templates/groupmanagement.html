@@ -39,9 +39,6 @@
                         <button class="btn btn-primary btn-lg btn-block btn-huge nBtn">Dodaj grupę</button>
                     </div>
                     <div class="col-md-3">
-                        <button class="btn btn-primary btn-lg btn-block btn-huge dBtn">Usuń grupę</button>
-                    </div>
-                    <div class="col-md-3">
                         <button class="btn btn-primary btn-lg btn-block btn-huge pBtn">Przypisz studenta</button>
                     </div>
                     <div class="col-md-3">
@@ -53,6 +50,7 @@
                         <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0" >
                             <thead>
                             <tr>
+                                <th>ID</th>
                                 <th>Nazwa grupy</th>
                                 <th>Akcja</th>
                             </tr>
@@ -60,9 +58,11 @@
                             <tbody>
                             <tr>
                             <tr th:each="group :${groups}">
-                                <td th:text="${group.name}"></td>
+                                <td th:text="${group.id}" style="font-size: 22px"></td>
+                                <td th:text="${group.name}" style="font-size: 22px"></td>
                                     <div sec:authorize="hasAuthority('ROLE_ADMIN')">
                                         <td>
+                                            <!--<button class="btn btn-primary btn-block deleteBtn">Usuń grupę</button>-->
                                             <a  th:href="@{/deletegroup/{id} (id=${group.id})}" class="btn btn-danger delBtn">Usuń</a>
                                             <!--<button class="btn btn-danger uBtn" id="btn-delete">Usuń</button>-->
                                             <a th:href="@{/findOne/(id=${group.id})}" class="btn btn-success eBtn" style="margin-left: 20px">Edytuj</a>
@@ -106,6 +106,32 @@
                             </div>
                             </form>
                         </div>
+            <div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Nowa grupa</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <form>
+                                <div class="form-group">
+                                    <label for="name" class="col-form-label">ID:</label>
+                                    <input type="text" class="form-control" id="id" name="id">
+                                    <label for="name" class="col-form-label">Nazwa grupy:</label>
+                                    <input type="text" class="form-control" id="name" name="name">
+                                </div>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Zamknij</button>
+                            <button type="submit" class="btn btn-primary" value="save" >Zapisz</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
         <div th:replace="fragments/footer :: footer"></div>
     </div>
@@ -126,6 +152,11 @@
             
             $('.myForm #exampleModal').modal();
         });
+        
+        $('.pBtn').on('click', function (event) {
+            event.preventDefault();
+            $('#exampleModal2').modal();
+        })
     
     });
     
