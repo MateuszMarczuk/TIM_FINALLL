@@ -138,7 +138,7 @@ body.fixed-nav.sidebar-toggled #content-wrapper {
 .sidebar {
   width: 90px !important;
   background-color: #212529;
-  min-height: calc(100vh - 56px);
+    min-height: 100%;
 }
 
 .sidebar .nav-item:last-child {

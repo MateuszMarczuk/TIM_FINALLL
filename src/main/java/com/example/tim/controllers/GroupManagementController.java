@@ -66,7 +66,7 @@ public class GroupManagementController {
         return groupRepository.findById(id);
     }
 
-    @RequestMapping(value = "/showGroupList", method = RequestMethod.GET)
+    @RequestMapping(value = "/showGroupList", method = RequestMethod.POST)
     public String showGroupList(Model model){
         List<Group> groupList = groupRepository.findAll();
         List<User> userList = userRepository.findAll();

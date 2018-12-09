@@ -21,8 +21,7 @@ public class EventController {
 		return eventRepository.findAll();
 	}
 
-	@RequestMapping(value="/event", method= RequestMethod.POST)
-	public Event addEvent(@RequestBody Event event) {
+	@RequestMapping(value="/addevent", method= RequestMethod.POST)	public Event addEvent(@RequestBody Event event) {
 		Event created = eventRepository.save(event);
 		return created;
 	}
@@ -32,10 +31,11 @@ public class EventController {
 		return eventRepository.save(event);
 	}
 
-	@RequestMapping(value="/event", method=RequestMethod.DELETE)
-	public void removeEvent(@RequestBody Event event) {
-		eventRepository.delete(event);
-	}
+
+    @RequestMapping(value="/event", method=RequestMethod.DELETE)
+    public void removeEvent(@RequestBody Event event) {
+        eventRepository.delete(event);
+    }
 
 	@RequestMapping(value="/events", method=RequestMethod.GET)
 	public List<Event> getEventsInRange(@RequestParam(value = "start", required = true) String start,

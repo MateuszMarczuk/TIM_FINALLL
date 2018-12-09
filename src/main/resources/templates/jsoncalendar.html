@@ -25,7 +25,9 @@
 	<script src="http://cdn.jsdelivr.net/webjars/jquery/2.1.3/jquery.min.js"
 			th:src="@{/webjars/fullcalendar/2.2.5/fullcalendar.min.js}"
 			type="text/javascript"></script>
-
+    <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.9.0/fullcalendar.min.js" type="text/javascript"></script>-->
+    <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.9.0/fullcalendar.min.css" type="text/css"></script>-->
+    <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.9.0/fullcalendar.print.css" type="text/css"></script>-->
 
 	<link rel="stylesheet"
 		  href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css"
@@ -69,7 +71,7 @@
 
 
    	function removeEvent() {
-
+     
    		var eventStart = moment(modstartdateandtime.value);
  			var eventEnd = moment(modenddateandtime.value);
 
@@ -87,12 +89,15 @@
 
 	    	$.ajax({
 			    type: "DELETE",
-			    url: "/removeevent",
+			    url: "/event",
 			    data: JSON.stringify(eventData),
 			    contentType: "application/json; charset=utf-8",
 			    dataType: "json",
 			    success: function(data){
-			    	$('#calendar').fullCalendar( 'refetchEvents' );
+//                    $('#calendar').fullCalendar('removeEvents');
+//                    $('#calendar').fullCalendar('addEventSource', events);
+//                    $('#calendar').fullCalendar('rerenderEvents' );
+                    $('#calendar').fullCalendar('renderEvent', data, true);
 			    },
 			    failure: function(errMsg) {
 			        alert(errMsg);
@@ -135,8 +140,8 @@
 					end:  eventEnd,
 					description: moddescription.value
 				};
-		//		alert(eventData.title.value + " " + eventData.start.value + " " + eventData.end.value)
-		//		$('#calendar').fullCalendar('renderEvent', eventData, true); // stick? = true
+				alert(eventData.title.value + " " + eventData.start.value + " " + eventData.end.value);
+				$('#calendar').fullCalendar('renderEvent', eventData, true); // stick? = true
 			}
 			$('#calendar').fullCalendar('unselect');
 
@@ -144,7 +149,7 @@
 
 	    	$.ajax({
 			    type: "PATCH",
-			    url: "/updateevent",
+			    url: "/event",
 			    data: JSON.stringify(eventData),
 			    contentType: "application/json; charset=utf-8",
 			    dataType: "json",
@@ -235,6 +240,7 @@
 	    });
 
     form = dialog.find( "form" ).on( "submit", function( event ) {
+        console.log("asdasdasdasdasd");
       event.preventDefault();
       addEvent();
     });
@@ -273,7 +279,7 @@
 			eventClick: function(event, element) {
 				editEvent(event, element);
 
-		       //$('#calendar').fullCalendar('updateEvent', event);
+		       $('#calendar').fullCalendar('updateEvent', event);
 		    },
 		    eventMouseover: function(event, jsEvent, view) {
 		   	},
@@ -385,10 +391,10 @@
 			</ol>
 			<div th:replace="fragments/row :: row"></div>
 			<div id='calendar'></div>
-			<div id="dialog-form" title="Create new Event">
+			<div id="dialog-form" title="Stórz nowe wydarzenia">
 				<form id="event-form">
 					<fieldset>
-						<label for="title">Tytuł</label>
+						<label>Tytuł</label>
 						<input type="text" name="newtitle" id="newtitle" value="New Event" class="text ui-widget-content ui-corner-all"/>
 
 						<label for="description">Opis:</label>
@@ -407,10 +413,10 @@
 				</form>
 			</div>
 
-			<div id="edit-dialog-form" title="Modify an Event">
+			<div id="edit-dialog-form" title="Edycja wydarzenia">
 				<form id="edit-event-form">
 					<fieldset>
-						<label for="title">Tytuł</label>
+						<label>Tytuł</label>
 						<input type="text" name="modtitle" id="modtitle" value="New Event" class="text ui-widget-content ui-corner-all"/>
 
 						<label for="description">Opis:</label>
@@ -421,7 +427,7 @@
 						<label for="modenddateandtime">Koniec:</label>
 						<input type="datetime-local" id="modenddateandtime"/>
 						<input type="hidden" name="moduid" id="moduid"/>
-						<input type="submit" tabindex="-1" style="position:absolute; top:-1000px"/>
+						<input type="submit" tabindex="-1" id="dupa" style="position:absolute; top:-1000px"/>
 					</fieldset>
 				</form>
 			</div>
