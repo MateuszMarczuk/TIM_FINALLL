@@ -30,6 +30,9 @@ public class User {
     private String email;
     private String password;
 
+    @ManyToOne
+    private Group group;
+
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinTable(
         name = "users_roles",

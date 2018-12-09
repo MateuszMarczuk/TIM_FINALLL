@@ -8,7 +8,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import java.util.List;
 
 /**
  * Created by Mateusz Marczuk
@@ -26,7 +28,6 @@ public class Group {
 
     private String name;
 
-//    @OneToOne(cascade = CascadeType.ALL,
-//    fetch = FetchType.EAGER)
-//    private List<User> users;
+    @OneToMany(mappedBy = "group")
+    private List<User> users;
 }

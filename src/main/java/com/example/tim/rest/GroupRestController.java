@@ -22,7 +22,6 @@ public class GroupRestController {
     GroupRepository groupRepository;
 
     @GetMapping(value = "/groupmanagement/all")
-    @ResponseBody
     public List<Group> showGroupMamagement() {
         return groupRepository.findAll();
     }
