@@ -27,6 +27,7 @@ body {
 #wrapper #content-wrapper {
   overflow-x: hidden;
   width: 100%;
+    height: 100%;
   padding-top: 1rem;
   padding-bottom: 80px;
 }

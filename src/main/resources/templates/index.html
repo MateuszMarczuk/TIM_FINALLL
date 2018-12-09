@@ -22,7 +22,9 @@
     <div id="content-wrapper">
         <div class="container-fluid">
             <div th:replace="fragments/row :: row"></div>
+            
         </div>
+       
         <div sec:authorize="isAuthenticated()">
             This content is only shown to authenticated users.
         </div>
@@ -35,9 +37,8 @@
         </div>
         <div sec:authentication="principal.authorities">
         </div>
-    
-    
         <div th:replace="fragments/footer :: footer"></div>
+    
     </div>
 </div>
 
