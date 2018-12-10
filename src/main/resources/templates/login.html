@@ -11,69 +11,114 @@
     <link rel="stylesheet" type="text/css" th:href="@{/css/main.css}"/>
     <link href="css/sb-admin.css" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css">
-    <title>Registration</title>
+    <title>Rejestracja</title>
 </head>
 <body class ="bg-dark">
-<div class="container">
-    <div class="card card-login mx-auto mt-5">
-        <div class="card-header">Wirtualny Dziennik - Logowanie</div>
-        <div class="card-body">
+<!--<div class="container">-->
+    <!--<div class="card card-login mx-auto mt-5">-->
+        <!--<div class="card-header">Wirtualny Dziennik - Logowanie</div>-->
+        <!--<div class="card-body">-->
 
-                <form th:action="@{/login}" method="post">
-                    <div th:if="${param.error}">
-                        <div class="alert alert-danger" role="alert" th:text="#{am_login_bad_credential}">
-                        
+                <!--<form th:action="@{/login}" method="post">-->
+                    <!--<div th:if="${param.error}">-->
+                        <!--<div class="alert alert-danger" role="alert" th:text="#{am_login_bad_credential}">-->
+                        <!---->
+                        <!--</div>-->
+                    <!--</div>-->
+                    <!--<div th:if="${param.logout}">-->
+                        <!--<div class="alert alert-info" th:text="#{am_login_info_logout}">-->
+                        <!---->
+                        <!--</div>-->
+                    <!--</div>-->
+                    <!--<div class="form-group">-->
+                        <!--<label for="username" th:text="#{am_login_username}"></label>:-->
+                        <!--<input type="text"-->
+                               <!--id="username"-->
+                               <!--name="username"-->
+                               <!--class="form-control"-->
+                               <!--autofocus="autofocus"-->
+                               <!--placeholder="Nazwa użytkownika"/>-->
+                    <!--</div>-->
+                    <!--<div class="form-group">-->
+                        <!--<label for="password" th:text="#{am_login_password}"></label>:-->
+                        <!--<input type="password"-->
+                               <!--id="password"-->
+                               <!--name="password"-->
+                               <!--class="form-control"-->
+                               <!--placeholder="Hasło"/>-->
+                    <!--</div>-->
+                    <!--<div class="form-group">-->
+                        <!--<div class="row">-->
+                            <!--<div class="col-sm-6 col-sm-offset-3">-->
+                                <!--<input type="submit"-->
+                                       <!--name="login-submit"-->
+                                       <!--id="login-submit"-->
+                                       <!--class="btn btn-primary btn-block am-form-input-submit"-->
+                                       <!--value="Zaloguj"/>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                    <!--<div class="form-group">-->
+                        <!--<input id="remember-me" name="remember-me" type="checkbox" value="true"/>-->
+                        <!--<label for="remember-me" class="inline" th:text="#{am_login_remember_me}"></label>-->
+                    <!--</div>-->
+                    <!--<div class="form-group">-->
+                        <!--<span th:text="#{am_login_new}"> </span><a href="/" th:href="@{/registration}"> Zarejestruj się ! </a>-->
+                    <!--</div>-->
+                    <!--<div sec:authorize="isAuthenticated()">-->
+                        <!--This content is only shown to authenticated users.-->
+                    <!--</div>-->
+                <!--</form>-->
+            <!--</div>-->
+        <!--</div>-->
+    <!---->
+    <!--</div>-->
+<!--</div>-->
+<div class="container">
+    <div class="row">
+        <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+            <div class="card card-signin my-5">
+                <div class="card-body" style="margin-top: 40px">
+                    <h5 class="card-title text-center">Zaloguj się !</h5>
+                    <form th:action="@{/login}" method="post" class="form-signin">
+                        <div class="form-label-group" for="username">
+                            <input type="text"
+                            id="username"
+                            name="username"
+                            class="form-control"
+                            autofocus="autofocus"
+                            placeholder="Nazwa użytkownika"/>
+                            <label for="username">Adres email</label>
                         </div>
-                    </div>
-                    <div th:if="${param.logout}">
-                        <div class="alert alert-info" th:text="#{am_login_info_logout}">
                         
+                        <div class="form-label-group" for="password">
+                            <input type="password"
+                            id="password"
+                            name="password"
+                            class="form-control"
+                            placeholder="Hasło"/>
+                            <label for="password">Hasło</label>
                         </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="username" th:text="#{am_login_username}"></label>:
-                        <input type="text"
-                               id="username"
-                               name="username"
-                               class="form-control"
-                               autofocus="autofocus"
-                               placeholder="Nazwa użytkownika"/>
-                    </div>
-                    <div class="form-group">
-                        <label for="password" th:text="#{am_login_password}"></label>:
-                        <input type="password"
-                               id="password"
-                               name="password"
-                               class="form-control"
-                               placeholder="Hasło"/>
-                    </div>
-                    <div class="form-group">
+                        
+                        <div class="custom-control custom-checkbox mb-3">
+                            <input type="checkbox" class="custom-control-input" id="customCheck1">
+                            <label class="custom-control-label"  for="customCheck1">Zapamiętaj hasło</label>
+                        </div>
                         <div class="row">
-                            <div class="col-sm-6 col-sm-offset-3">
-                                <input type="submit"
-                                       name="login-submit"
-                                       id="login-submit"
-                                       class="btn btn-primary btn-block am-form-input-submit"
-                                       value="Zaloguj"/>
-                            </div>
+                            <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Zaloguj</button>
                         </div>
-                    </div>
-                    <div class="form-group">
-                        <input id="remember-me" name="remember-me" type="checkbox" value="true"/>
-                        <label for="remember-me" class="inline" th:text="#{am_login_remember_me}"></label>
-                    </div>
-                    <div class="form-group">
-                        <span th:text="#{am_login_new}"> </span><a href="/" th:href="@{/registration}"> Zarejestruj się ! </a>
-                    </div>
-                    <div sec:authorize="isAuthenticated()">
-                        This content is only shown to authenticated users.
-                    </div>
-                </form>
+                        
+                        <hr class="my-4">
+                        <div class="form-group">
+                            <button class="btn btn-lg btn-block text-uppercase"><a th:href="@{/registration}"> Zarejestruj się ! </a></button>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
-    
     </div>
 </div>
+
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
