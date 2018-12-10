@@ -1,4 +1,4 @@
-package com.example.tim.rest;
+package com.example.tim.restController;
 
 import com.example.tim.model.Group;
 import com.example.tim.repository.GroupRepository;
