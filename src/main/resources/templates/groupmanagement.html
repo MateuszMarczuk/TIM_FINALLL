@@ -42,12 +42,15 @@
                         <a class="btn btn-primary btn-lg btn-block btn-huge pBtn" th:href="@{/showGroupList}">Przypisz studenta</a>
                     </div>
                     <div class="col-md-3">
-                        <a class="btn btn-primary btn-lg btn-block btn-huge pBtn" a href="/">Przypisz przedmiot</a>
+                        <a class="btn btn-primary btn-lg btn-block btn-huge pBtn" th:href="@{/showSubjectList}">Przypisz przedmiot</a>
                     </div>
                 </div>
                 
                 <div class="card-body">
                     <div class="table-responsive">
+                        <div class="col-3">
+                            <input id="myInput" type="name" class="form-control" aria-describedby="emailHelp" placeholder="Szukaj..." style="margin-bottom: 13px; margin-left: -15px">
+                        </div>
                         <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0" >
                             <thead>
                             <tr>
@@ -56,7 +59,7 @@
                                 <th>Akcja</th>
                             </tr>
                             </thead>
-                            <tbody>
+                            <tbody id="myTable">
                             <tr>
                             <tr th:each="group :${groups}">
                                 <td th:text="${group.id}" style="font-size: 22px"></td>
@@ -132,6 +135,15 @@
     });
     
 </script>
-
+<script>
+    $(document).ready(function(){
+        $("#myInput").on("keyup", function() {
+            var value = $(this).val().toLowerCase();
+            $("#myTable tr").filter(function() {
+                $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+            });
+        });
+    });
+</script>
 </body>
 </html>

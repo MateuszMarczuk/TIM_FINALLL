@@ -35,14 +35,14 @@
                 </div>
             </div>
             <div class="container">
-                <form name="myForm" method="post">
+                <form name="myForm" th:action="@{/assign}" method="post">
                 <div class="row" id="groupList">
                     <div class="col-sm">
                         <div class="form-group blu-margin" th:object="${group}">
-                            <select class="form-control"  id="dropGroup">
+                            <select class="form-control"  id="dropGroup" name="groupId">
                                 <option value="0">Wybierz grupę : </option>
                                 <option th:each="group : ${groupList}"
-                                        th:value="${group.name}"
+                                        th:value="${group.id}"
                                         th:text="${group.name}">
                                 </option>
                             </select>
@@ -50,17 +50,17 @@
                     </div>
                     <div class="col-sm">
                         <div class="form-group blu-margin" th:object="${user}">
-                            <select class="form-control"  id="dropGroup">
+                            <select class="form-control"  id="dropGroup2" name="userId">
                                 <option value="0">Wybierz studenta : </option>
                                 <option th:each="user : ${userListNew}"
-                                        th:value="${user.firstName}"
+                                        th:value="${user.id}"
                                         th:text="${user.firstName}+ ' ' +${user.lastName}">
                                 </option>
                             </select>
                         </div>
                     </div>
                     <div class="col-sm">
-                        <td><input name="submit" type="submit" value="submit" /></td>
+                        <td><input name="submit" type="submit" value="submit"></td>
                     </div>
                     <div class="col-sm">
                         <p> </p>

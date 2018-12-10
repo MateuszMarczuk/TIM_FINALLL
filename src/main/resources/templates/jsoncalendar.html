@@ -41,6 +41,8 @@
   <!--
 
   $(function() {
+    
+    
     var dialog, form,
 
      	tips = $( ".validateTips" );
@@ -94,10 +96,9 @@
 			    contentType: "application/json; charset=utf-8",
 			    dataType: "json",
 			    success: function(data){
-//                    $('#calendar').fullCalendar('removeEvents');
-//                    $('#calendar').fullCalendar('addEventSource', events);
-//                    $('#calendar').fullCalendar('rerenderEvents' );
-                    $('#calendar').fullCalendar('renderEvent', data, true);
+                    $('#calendar').fullCalendar('removeEvents');
+                    $('#calendar').fullCalendar('addEventSource', '/event');
+                    $('#calendar').fullCalendar('rerenderEvents');
 			    },
 			    failure: function(errMsg) {
 			        alert(errMsg);
@@ -290,6 +291,13 @@
 			}
 		});
 	});
+//      $('#calendar').fullCalendar({
+//          monthNames: ['Styczeń','Luty','Marzec','Kwiecień','Maj','Czerwiec','Lipiec','Sierpień','Wrzzesień','Październik','Listopad','Grudzień'],
+//          monthNamesShort: ['Sty','Lut','Mar','Kwi','Maj','Cze','Lip','Sie','Wrz','Paź','Lis','Gru'],
+//          dayNames: ['Poniedziałek','Wtorek','Sroda','Czwarte','Piątek','Sobota','Niedziela'],
+//          dayNamesShort: ['Pon', 'Wt','Sr','Czw','Pt', 'So', 'Nd']
+//      });
+  
   });
   -->
 
@@ -441,4 +449,7 @@
 </div>-->
 
 </body>
+<script type="text/javascript">
+
+</script>
 </html>

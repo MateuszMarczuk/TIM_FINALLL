@@ -10,11 +10,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.jws.soap.SOAPBinding;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -43,8 +47,6 @@ public class GroupManagementController {
         return "groupmanagement";
     }
 
-
-
     @RequestMapping(value = "/deletegroup/{id}", method = RequestMethod.GET)
     public String deleteGroup(Model model, @PathVariable("id") Long id){
         Group group = groupRepository.findById(id)
@@ -66,7 +68,7 @@ public class GroupManagementController {
         return groupRepository.findById(id);
     }
 
-    @RequestMapping(value = "/showGroupList", method = RequestMethod.POST)
+    @RequestMapping(value = "/showGroupList", method = RequestMethod.GET)
     public String showGroupList(Model model){
         List<Group> groupList = groupRepository.findAll();
         List<User> userList = userRepository.findAll();
@@ -93,9 +95,14 @@ public class GroupManagementController {
     }
 
     @RequestMapping(value = "/assign", method = RequestMethod.POST)
-    public String assign(Model model){
+    public String assign(@RequestParam("groupId") Long idgroup, @RequestParam("userId") Long iduser){
 
-        return "redirect:/groupList";
+       User user = userRepository.findById(iduser).get();
+       Group group = groupRepository.findById(idgroup).get();
+        user.setGroup(group);
+       userRepository.save(user);
+
+        return "redirect:/groupmanagement";
     }
 
 

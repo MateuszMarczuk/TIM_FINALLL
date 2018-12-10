@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/sb-admin.css" rel="stylesheet">
+    <link href="css/main.css" rel="stylesheet">
+
+
+</head>
+
+<body id="page-top">
+
+<div th:replace="fragments/header :: header"></div>
+<div id="wrapper">
+    <div th:replace="fragments/wrapper :: wrapper"></div>
+    <div id="content-wrapper">
+        <div class="container-fluid">
+            <ol class="breadcrumb">
+                
+                <li class="breadcrumb-item">
+                    <a href="/">Home</a>
+                </li>
+                <li class="breadcrumb-item active">Pracownicy</li>
+            </ol>
+            <div th:replace="fragments/row :: row"></div>
+            <div class="card mb-3">
+                <div class="card-header">
+                    <i class="fas fa-table"></i>
+                    Przypisz przedmiot do grupy
+                </div>
+            </div>
+            <div class="container">
+                <form name="myForm" th:action="@{/assignsubject}" method="post">
+                    <div class="row" id="subjectList">
+                        <div class="col-sm">
+                            <div class="form-group blu-margin" th:object="${group}">
+                                <select class="form-control"  id="dropGroup" name="groupId">
+                                    <option value="0">Wybierz grupę : </option>
+                                    <option th:each="group : ${groupList}"
+                                            th:value="${group.id}"
+                                            th:text="${group.name}">
+                                    </option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-sm">
+                            <div class="form-group blu-margin" th:object="${subject}">
+                                <select class="form-control"  id="dropGroup2" name="subjectId">
+                                    <option value="0">Wybierz przedmiot : </option>
+                                    <option th:each="subject : ${subjectListNew}"
+                                            th:value="${subject.id}"
+                                            th:text="${subject.name}+ ' : ' +${subject.typeOfActivities}">
+                                    </option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-sm">
+                            <td><input name="submit" type="submit" value="submit"></td>
+                        </div>
+                        <div class="col-sm">
+                            <p> </p>
+                        </div>
+                    </div>
+                </form>
+            
+            
+            </div>
+        
+        
+        </div>
+        <div th:replace="fragments/footer :: footer"></div>
+    </div>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+
+
+</body>
+</html>
